@@ -329,3 +329,13 @@ img.logo, img.logo-coctelera {
 .animar-imagen:active {
     transform: scale(0.99);
 }
+
+.contenedor-barra {
+    background-color: rgba(180, 0, 0, 0.9) !important; /* El color rojo elegante */
+    border-radius: 20px !important;                   /* Tus esquinas redondas */
+    padding: 15px 30px !important;                    /* El ajuste del fondo al texto */
+    display: inline-block !important;                 /* Hace que el fondo se ajuste al texto */
+    margin: 20px auto !important;                     /* Centrado */
+    text-align: center !important;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important; /* Un pequeño borde para definirlo */
+}
