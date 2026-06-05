@@ -16,8 +16,127 @@
     font-style: normal;
 }
 
+
 /* ==========================================================================
-   ESTILOS GENERALES Y ANIMACIONES
+   --- ESTILOS EXCLUSIVOS PARA MÓVILES (BLINDADO ARRIBA) ---
+   ========================================================================== */
+@media (max-width: 768px) {
+
+    /* 1. Asegurar que la pantalla no se estire horizontalmente */
+    html, body {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* 2. Forzar que las cajas principales rompan columnas y se expandan */
+    .bloque, .bloque-cocteles {
+        display: block !important;
+        width: 92% !important;         /* Ocupan casi todo el ancho del dispositivo */
+        max-width: 92% !important;
+        margin-left: auto !important;  /* Centrado perfecto horizontal */
+        margin-right: auto !important; 
+        margin-top: 20px !important;
+        margin-bottom: 30px !important;
+        padding: 35px 20px !important; /* Relleno óptimo para lectura */
+        float: none !important;
+        box-sizing: border-box !important;
+        
+        /* Forzamos visibilidad inmediata en móvil por si falla el JS de scroll */
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    /* 3. Desestrangular textos y descripciones de los cócteles */
+    .texto, .descripcion, p, span {
+        font-size: 17px !important;    /* Tamaño de lectura ideal para smartphones */
+        line-height: 1.6 !important;   /* Separación elegante entre líneas */
+        text-align: center !important; /* Todo centrado al estilo carta premium */
+        width: 100% !important;
+        max-width: 100% !important;
+        display: block !important;
+        padding: 0 10px !important;
+        margin-top: 12px !important;
+        margin-bottom: 12px !important;
+    }
+
+    /* 4. Arreglar la posición de la copa de Martini o fotos individuales */
+    .foto-coctel-lista, .bloque-cocteles img, img[src*="martini"] {
+        width: 65% !important;         /* Reducimos la copa para que mantenga proporción estética */
+        max-width: 180px !important;
+        height: auto !important;
+        display: block !important;
+        margin: 25px auto 10px auto !important; /* La bajamos centrada debajo del texto */
+        position: relative !important;  /* Rompe posiciones absolutas que la sacaban de la pantalla */
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        top: auto !important;
+        float: none !important;
+    }
+
+    /* 5. Imágenes decorativas generales e interactivas */
+    img, .animar-imagen, .vista-previa {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        margin: 15px auto !important;
+        display: block !important;
+    }
+
+    /* Ajuste de logotipos para que no se agiganten */
+    img.logo, img.logo-coctelera {
+        width: 60% !important;
+        max-width: 180px !important;
+        margin: 15px auto !important;
+    }
+
+    /* 6. Controlar el cuadro de Inicio de Sesión / Formularios e Inputs */
+    form {
+        width: 100% !important;
+        max-width: 100% !important;
+        display: block !important;
+    }
+
+    input[type="text"], input[type="password"], input, button {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        font-size: 16px !important;    /* Evita zooms automáticos e incómodos en iOS */
+        padding: 12px !important;      /* Tamaño perfecto para pulsar con el pulgar */
+        margin-bottom: 15px !important;
+    }
+
+    /* 7. Barra de navegación adaptada */
+    nav {
+        display: block !important;
+        width: 100% !important;
+        text-align: center !important;
+    }
+    
+    nav a, nav button {
+        display: block !important;    /* Un botón debajo de otro */
+        margin: 10px auto !important;
+        width: 85% !important;
+    }
+
+    /* 8. Ajuste de fuentes y fondos de pantalla en móvil */
+    body {
+        background-size: cover !important;
+        background-position: center center !important;
+        background-attachment: scroll !important; /* Desactivamos 'fixed' que rompe el renderizado en móviles */
+    }
+
+    h1 { font-size: 1.8rem !important; text-align: center !important; line-height: 1.3 !important; }
+    h2 { font-size: 1.5rem !important; text-align: center !important; }
+    h3 { font-size: 1.2rem !important; text-align: center !important; }
+}
+
+
+/* ==========================================================================
+   ESTILOS GENERALES Y ANIMACIONES (ORDENADOR / BASE)
    ========================================================================== */
 
 @keyframes ruidoAnimado {
@@ -37,7 +156,6 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden; 
-    /* Aplicamos la fuente ModernRomance por defecto a toda la web */
     font-family: 'ModernRomance', sans-serif; 
 }
 
@@ -55,12 +173,10 @@ body::before {
     animation: ruidoAnimado 0.2s infinite steps(1);
 }
 
-/* Forzamos a que los títulos principales utilicen la fuente PerfectGirl */
 h1, h2, h3 {
     font-family: 'PerfectGirl', monospace !important;
 }
 
-/* Cajas oscuras normales (como el menú de navegación y textos de main.html) */
 .bloque {
     display: block;
     padding: 30px 40px;
@@ -80,41 +196,34 @@ h1, h2, h3 {
     transform: translateY(0);
 }
 
-/* Cuadro único oscuro con borde amarillo dorado para los cócteles */
 .bloque-cocteles {
     display: block;
     padding: 50px 40px;
     border-radius: 15px;       
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); /* Sombra un poco más intensa para dar profundidad */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); 
     width: 70%;          
     text-align: center;
     box-sizing: border-box;
     margin-bottom: 60px;
-    
-    /* CAMBIO: Fondo oscuro original restaurado con borde dorado */
     background-color: rgba(0, 0, 0, 0.8); 
-    /* Mantiene las propiedades de animación por scroll */
     opacity: 0;
     transform: translateY(40px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-/* Activa la animación suave de aparición cuando entra en pantalla */
 .bloque-cocteles.visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* Hace el logo de Il Capo más grande y estilizado */
 .logo-coctelera {
-    width: 220px !important;       /* Aumenta el ancho (ajusta este valor si lo quieres aún más grande) */
-    height: auto !important;        /* Mantiene la proporción original para que no se deforme */
-    margin-top: 20px !important;    /* Separa el logo del borde superior del cuadro */
-    margin-bottom: 10px !important; /* Espacio elegante antes del título "CARTA DE CONTRABANDO" */
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.6)); /* Sombra suave para que resalte sobre el fondo oscuro */
+    width: 220px !important;       
+    height: auto !important;        
+    margin-top: 20px !important;    
+    margin-bottom: 10px !important; 
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.6)); 
 }
 
-/* Estilo para las imágenes decorativas grandes (como la escena de la barra) */
 img {
     width: 70%; 
     height: auto;
@@ -123,7 +232,6 @@ img {
     box-sizing: border-box;
 }
 
-/* Evitamos que los logotipos hereden el tamaño del 70% o los bordes amarillos */
 img.logo, img.logo-coctelera {
     width: 50% !important; 
     max-width: 280px;
@@ -164,9 +272,7 @@ img.logo, img.logo-coctelera {
 }
 
 @keyframes girarRueda {
-    to {
-        transform: rotate(360deg);
-    }
+    to { transform: rotate(360deg); }
 }
 
 .fade-out {
@@ -191,19 +297,16 @@ img.logo, img.logo-coctelera {
 }
 
 .foto-coctel-lista {
-    width: 200px !important;       /* ¡Aumentadas a 200px! Puedes subirlo a 220px si quieres más impacto */
-    height: 200px !important;      /* Mantenemos un formato cuadrado perfecto */
-    object-fit: contain !important; /* Evita que la foto del cóctel se deforme o se corte */
-    border-radius: 12px !important; /* Bordes un poco más suaves para el nuevo tamaño */
+    width: 200px !important;       
+    height: 200px !important;      
+    object-fit: contain !important; 
+    border-radius: 12px !important; 
     padding: 8px;
     box-sizing: border-box;
     margin: 0 !important;
     cursor: pointer !important;
-    flex-shrink: 0;                /* Evita que el texto grande aplaste la imagen */
+    flex-shrink: 0;                
 }
-
-
-/* --- ANIMACIÓN INTERACTIVA CON HALO DORADO (MAIN.HTML) --- */
 
 .animar-imagen {
     width: 70%; 
@@ -211,178 +314,18 @@ img.logo, img.logo-coctelera {
     margin-bottom: 20px;
     margin-top: 20px;
     box-sizing: border-box;
-    border: 1px solid rgba(235, 193, 5, 0.2); /* Borde dorado sutil de base */
+    border: 1px solid rgba(235, 193, 5, 0.2); 
     border-radius: 12px;
-    cursor: pointer; /* Muestra la mano interactiva */
+    cursor: pointer; 
     transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
-/* Efecto al pasar el cursor (Hover) */
 .animar-imagen:hover {
-    transform: scale(1.03); /* Se agranda ligeramente de forma sofisticada */
-    border-color: #ebc105; /* El borde se ilumina intensamente en oro */
-    box-shadow: 0 0 25px rgba(235, 193, 5, 0.6); /* ¡El halo amarillo de contrabando! */
+    transform: scale(1.03); 
+    border-color: #ebc105; 
+    box-shadow: 0 0 25px rgba(235, 193, 5, 0.6); 
 }
 
-/* Efecto de pulsación */
 .animar-imagen:active {
     transform: scale(0.99);
-}
-
-/* ==========================================================================
-   --- ESTILOS EXCLUSIVOS PARA MÓVILES (VERSIÓN DEFINITIVA) ---
-   ========================================================================== */
-@media (max-width: 768px) {
-
-    /* 1. Asegurar que la pantalla no se estire horizontalmente */
-    html, body {
-        width: 100% !important;
-        max-width: 100% !important;
-        overflow-x: hidden !important;
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-
-    /* 2. Arreglar tus cajas principales (.bloque y .bloque-cocteles) */
-    .bloque, .bloque-cocteles {
-        width: 90% !important;       /* Ocupan casi toda la pantalla del móvil */
-        max-width: 90% !important;
-        margin-left: auto !important;  /* Estos dos márgenes 'auto' las centran a la perfección */
-        margin-right: auto !important; 
-        padding: 25px 15px !important; /* Reducimos el relleno para que el texto tenga sitio */
-        float: none !important;
-        box-sizing: border-box !important;
-    }
-
-    /* 3. Hacer que TODAS las imágenes grandes se adapten al ancho de la caja */
-    img, .animar-imagen, .vista-previa {
-        width: 100% !important;      /* Se estiran como máximo al ancho de la caja oscura */
-        max-width: 100% !important;
-        height: auto !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
-        display: block !important;
-    }
-
-    /* Ajuste especial para los logotipos (para que no se hagan gigantes) */
-    img.logo, img.logo-coctelera {
-        width: 60% !important;
-        max-width: 180px !important;
-        margin: 15px auto !important;
-    }
-
-    /* 4. Las imágenes pequeñas de la lista de cócteles */
-    .foto-coctel-lista {
-        width: 120px !important;     /* Un tamaño cuadrado más compacto para el móvil */
-        height: 120px !important;
-        display: inline-block !important; /* Evita que rompa el flujo del texto */
-    }
-
-    /* 5. Asegurar que los menús verticales no se monten */
-    nav {
-        display: block !important;
-        width: 100% !important;
-        text-align: center !important;
-    }
-    
-    nav a, nav button {
-        display: block !important;    /* Un botón debajo de otro */
-        margin: 10px auto !important;
-        width: 80% !important;
-    }
-
-    /* 6. Ajustar fuentes para pantallas pequeñas */
-    h1 {
-        font-size: 1.8rem !important; /* Evita que los títulos grandes rompan los márgenes */
-        line-height: 1.3 !important;
-    }
-    h2 { font-size: 1.5rem !important; }
-    h3 { font-size: 1.3rem !important; }
-    
-    .texto, .descripcion, p, span {
-        font-size: 16px !important;   /* Tamaño perfecto para leer en mano */
-    }
-    /* Ajustar la imagen de fondo en el móvil para que no salga gigante */
-    body {
-        background-size: cover !important;       /* Fuerza a que el fondo se adapte al cristal del móvil */
-        background-position: center center !important; /* Centra la parte más bonita de la foto */
-        background-attachment: scroll !important;  /* En móviles va mejor 'scroll' que 'fixed' para evitar saltos */
-    }
-
-    /* Controlar el cuadro de Inicio de Sesión / Formularios */
-    .bloque, .bloque-cocteles, form {
-        width: 85% !important;        /* Lo estrechamos un pelín más para que deje aire a los lados */
-        padding: 30px 20px !important;  /* Reducimos el espacio interno para que sea compacto */
-    }
-
-    /* ¡MUY IMPORTANTE! Ajustar las cajas blancas donde el usuario escribe */
-    input[type="text"], 
-    input[type="password"], 
-    input, 
-    button {
-        width: 100% !important;       /* Que ocupen el ancho completo de la cajita marrón */
-        max-width: 100% !important;
-        box-sizing: border-box !important; /* Evita que se salgan del cuadro por los lados */
-        font-size: 16px !important;    /* Evita que el iPhone haga un zoom automático molesto al escribir */
-        padding: 10px !important;      /* Un tamaño de botón cómodo para el dedo */
-    }
-    /* --- ARREGLO EXCLUSIVO PARA LA CARTA DE COCTELES --- */
-    
-    /* Si estás usando un contenedor Flexbox o Grid para alinear el texto y la foto */
-    .bloque-cocteles, 
-    .contenedor-cocteles, 
-    .grid-productos,
-    [class*="coctel"] { 
-        display: flex !important;
-        flex-direction: column !important; /* Fuerza a que todo fluya hacia abajo, no en fila */
-        align-items: center !important;    /* Centra todos los elementos */
-        text-align: center !important;    /* Centra los textos para que luzcan elegantes */
-        width: 92% !important;
-        max-width: 92% !important;
-        padding: 20px 10px !important;
-    }
-
-    /* Evitar que el texto se quede estrangulado en una columna estrecha */
-    .bloque-cocteles *, 
-    .contenedor-cocteles * {
-        max-width: 100% !important;
-        width: 100% !important;
-        float: none !important;
-        box-sizing: border-box !important;
-    }
-
-    /* Hacer que las descripciones de los cócteles respiren a lo ancho */
-    .descripcion, 
-    .texto, 
-    p {
-        font-size: 17px !important;    /* Un tamaño muy legible */
-        line-height: 1.5 !important;   /* Espaciado elegante entre líneas */
-        padding: 0 15px !important;    /* Pequeño margen para que no pegue al borde del fondo granate */
-        width: 100% !important;
-        display: block !important;
-    }
-
-    /* Arreglar la posición de la copa de Martini o fotos de cócteles individuales */
-    .foto-coctel-lista, 
-    img[src*="martini"], 
-    .bloque-cocteles img {
-        width: 60% !important;         /* Reducimos la copa para que no se coma la pantalla */
-        max-width: 180px !important;
-        height: auto !important;
-        margin: 25px auto 10px auto !important; /* La centramos abajo dejando aire */
-        position: relative !important;  /* Desactiva posiciones absolutas que la saquen de la caja */
-        right: auto !important;
-        bottom: auto !important;
-        display: block !important;
-    }
-
-    /* Ajustar el título del cóctel ("1. DRY MARTINI") */
-    .bloque-cocteles h1, 
-    .bloque-cocteles h2, 
-    .bloque-cocteles h3 {
-        margin-top: 20px !important;
-        margin-bottom: 15px !important;
-        font-size: 1.6rem !important;
-        text-align: center !important;
-    }
 }
