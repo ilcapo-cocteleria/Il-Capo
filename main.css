@@ -228,3 +228,36 @@ img.logo, img.logo-coctelera {
 .animar-imagen:active {
     transform: scale(0.99);
 }
+
+/* --- ESTILOS EXCLUSIVOS PARA MÓVILES --- */
+@media (max-width: 768px) {
+
+    /* 1. La barra de navegación */
+    nav {
+        flex-direction: column; /* Los botones se ponen uno debajo de otro en vez de en fila */
+        gap: 15px;
+        padding: 20px 10px;
+    }
+
+    /* 2. El contenedor principal o rejilla de cócteles */
+    .contenedor-cocteles, .grid-productos { 
+        grid-template-columns: 1fr; /* Fuerza a que los cócteles salgan en una sola columna */
+        padding: 10px;
+    }
+
+    /* 3. Ajustar los textos grandes (títulos) */
+    h1 {
+        font-size: 2.2rem; /* Achica un poco el título principal para que no se corte */
+        text-align: center;
+    }
+    
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    /* 4. Las imágenes y vistas previas */
+    img, .vista-previa {
+        max-width: 100%; /* Evita que las fotos se salgan por los lados de la pantalla */
+        height: auto;
+    }
+}
