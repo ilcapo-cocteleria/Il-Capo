@@ -302,4 +302,28 @@ img.logo, img.logo-coctelera {
     .texto, .descripcion, p, span {
         font-size: 16px !important;   /* Tamaño perfecto para leer en mano */
     }
+    /* Ajustar la imagen de fondo en el móvil para que no salga gigante */
+    body {
+        background-size: cover !important;       /* Fuerza a que el fondo se adapte al cristal del móvil */
+        background-position: center center !important; /* Centra la parte más bonita de la foto */
+        background-attachment: scroll !important;  /* En móviles va mejor 'scroll' que 'fixed' para evitar saltos */
+    }
+
+    /* Controlar el cuadro de Inicio de Sesión / Formularios */
+    .bloque, .bloque-cocteles, form {
+        width: 85% !important;        /* Lo estrechamos un pelín más para que deje aire a los lados */
+        padding: 30px 20px !important;  /* Reducimos el espacio interno para que sea compacto */
+    }
+
+    /* ¡MUY IMPORTANTE! Ajustar las cajas blancas donde el usuario escribe */
+    input[type="text"], 
+    input[type="password"], 
+    input, 
+    button {
+        width: 100% !important;       /* Que ocupen el ancho completo de la cajita marrón */
+        max-width: 100% !important;
+        box-sizing: border-box !important; /* Evita que se salgan del cuadro por los lados */
+        font-size: 16px !important;    /* Evita que el iPhone haga un zoom automático molesto al escribir */
+        padding: 10px !important;      /* Un tamaño de botón cómodo para el dedo */
+    }
 }
