@@ -230,79 +230,76 @@ img.logo, img.logo-coctelera {
 }
 
 /* ==========================================================================
-   --- ESTILOS EXCLUSIVOS PARA MÓVILES ---
+   --- ESTILOS EXCLUSIVOS PARA MÓVILES (VERSIÓN DEFINITIVA) ---
    ========================================================================== */
 @media (max-width: 768px) {
 
-    /* 0. Limpieza total de desbordamiento de pantalla */
+    /* 1. Asegurar que la pantalla no se estire horizontalmente */
     html, body {
-        width: 100%;
-        overflow-x: hidden;
-        margin: 0;
-        padding: 0;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
 
-    /* 1. Ajuste de los bloques contenedores principales (¡El cambio clave!) */
+    /* 2. Arreglar tus cajas principales (.bloque y .bloque-cocteles) */
     .bloque, .bloque-cocteles {
-        width: 92% !important;  /* En móviles aprovechamos el espacio dejando solo un pequeño margen elegante */
-        padding: 30px 20px !important; /* Reducimos el relleno interno para que no aplaste el texto */
-        margin-left: auto !important;  /* Centrado perfecto en pantallas pequeñas */
-        margin-right: auto !important;
+        width: 90% !important;       /* Ocupan casi toda la pantalla del móvil */
+        max-width: 90% !important;
+        margin-left: auto !important;  /* Estos dos márgenes 'auto' las centran a la perfección */
+        margin-right: auto !important; 
+        padding: 25px 15px !important; /* Reducimos el relleno para que el texto tenga sitio */
         float: none !important;
+        box-sizing: border-box !important;
     }
 
-    /* 2. Las imágenes decorativas y con animación */
+    /* 3. Hacer que TODAS las imágenes grandes se adapten al ancho de la caja */
     img, .animar-imagen, .vista-previa {
-        width: 100% !important; /* Que las imágenes de ambiente ocupen todo el ancho del bloque */
+        width: 100% !important;      /* Se estiran como máximo al ancho de la caja oscura */
         max-width: 100% !important;
         height: auto !important;
         margin-left: auto !important;
         margin-right: auto !important;
+        display: block !important;
     }
 
-    /* Evitamos que los logos se hagan gigantes al heredar el 100% */
+    /* Ajuste especial para los logotipos (para que no se hagan gigantes) */
     img.logo, img.logo-coctelera {
-        width: 65% !important; 
-        max-width: 200px !important;
+        width: 60% !important;
+        max-width: 180px !important;
+        margin: 15px auto !important;
     }
 
-    /* 3. La barra de navegación */
-    nav {
-        display: flex !important;
-        flex-direction: column !important; /* Los botones se ponen uno debajo de otro */
-        gap: 12px !important;
-        padding: 20px 15px !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
-    }
-
-    /* 4. El contenedor o rejilla de cócteles */
-    .contenedor-cocteles, .grid-productos { 
-        display: grid !important;
-        grid-template-columns: 1fr !important; /* Una sola columna pura de arriba a abajo */
-        padding: 10px !important;
-        gap: 20px !important;
-    }
-
-    /* Si las fotos de la lista de cócteles se ven gigantes, las controlamos aquí */
+    /* 4. Las imágenes pequeñas de la lista de cócteles */
     .foto-coctel-lista {
-        width: 140px !important;  /* Un tamaño más equilibrado para pantallas de móvil */
-        height: 140px !important;
+        width: 120px !important;     /* Un tamaño cuadrado más compacto para el móvil */
+        height: 120px !important;
+        display: inline-block !important; /* Evita que rompa el flujo del texto */
     }
 
-    /* 5. Ajustar los textos para que no provoquen saltos de línea extraños */
-    h1 {
-        font-size: 2.0rem !important; /* Achicamos un poco el título principal */
+    /* 5. Asegurar que los menús verticales no se monten */
+    nav {
+        display: block !important;
+        width: 100% !important;
         text-align: center !important;
-        line-height: 1.2 !important;
     }
     
-    h2 {
-        font-size: 1.6rem !important;
-        text-align: center !important;
+    nav a, nav button {
+        display: block !important;    /* Un botón debajo de otro */
+        margin: 10px auto !important;
+        width: 80% !important;
     }
 
-    .texto, .descripcion {
-        font-size: 16px !important; /* El texto de lectura se lee mejor a este tamaño en mano */
+    /* 6. Ajustar fuentes para pantallas pequeñas */
+    h1 {
+        font-size: 1.8rem !important; /* Evita que los títulos grandes rompan los márgenes */
+        line-height: 1.3 !important;
+    }
+    h2 { font-size: 1.5rem !important; }
+    h3 { font-size: 1.3rem !important; }
+    
+    .texto, .descripcion, p, span {
+        font-size: 16px !important;   /* Tamaño perfecto para leer en mano */
     }
 }
