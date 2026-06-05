@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="main.css" />
+    <title>Il Capo - Inicio</title>
+</head>
+<body style="background-color: rgb(179, 0, 12);">
+
+    <!-- Pantalla de carga (Loader) -->
+    <div id="loader-wrapper">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Contenido Principal de la Página -->
+    <div id="contenido-pagina" style="display: none;">
+        <center>
+            <br><br><br>
+            
+            <!-- ==========================================================================
+               BARRA DE NAVEGACIÓN (Solo 'Inicio' queda resaltado en oro)
+               ========================================================================== -->
+            <div class="bloque" style="background-color: rgba(0, 0, 0, 0.8); color: #ffffff; padding: 20px 40px;">
+                <a href="main.html" style="color: #ffffff; font-family: 'ModernRomance', serif; text-decoration: none; font-size: 20px; border-bottom: 1px solid #ebc105;">Inicio</a>
+                <a href="main.html" style="color: #ffffff; font-family: 'ModernRomance', serif; text-decoration: none; font-size: 20px; margin-left: 20px;">Sobre nosotros</a>
+                <a href="contacto.html" style="color: #ffffff; font-family: 'ModernRomance', serif; text-decoration: none; font-size: 20px; margin-left: 20px;">Contacto</a>
+                <a href="coctelera.html" style="color: #ffffff; font-family: 'ModernRomance', serif; text-decoration: none; font-size: 20px; margin-left: 20px;">Nuestra Coctelera</a>
+            </div>
+
+            <!-- Sección de Bienvenida -->
+            <div class="bloque" style="background-color: rgba(0, 0, 0, 0.8); color: #ffffff;">
+                <img src="logo.png" alt="Logo Il Capo" class="logo">
+                <p class="texto">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            </div>
+
+            <!-- Imagen Interactiva de la Barra con Animación -->
+            <img class="animar-imagen" src="Escena barra cocteles.png" alt="Escena Barra">
+            <p class="descripcion">"BARRA DE COCTELES"</p>
+
+            <!-- Bloques Informativos de Contrabando -->
+            <div class="bloque" style="background-color: rgba(0, 0, 0, 0.8); color: #ffffff;">
+                <img src="logo.png" alt="Logo Il Capo" class="logo">
+                <p class="texto">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            </div>
+
+            <div class="bloque" style="background-color: rgba(0, 0, 0, 0.8); color: #ffffff;">
+                <img src="logo.png" alt="Logo Il Capo" class="logo">
+                <p class="texto">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            </div>
+
+            <!-- Música de Fondo -->
+            <audio id="bg-music" loop>
+                <source src="music.mp3" type="audio/mpeg">
+            </audio>
+<!-- Modal para la Vista Previa en Grande de la Barra -->
+<div id="preview-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0, 0, 0, 0.9); z-index: 12000; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease;">
+    <!-- Botón para cerrar (X) -->
+    <span id="cerrar-preview" style="position: absolute; top: 30px; right: 40px; color: #ebc105; font-size: 50px; font-family: monospace; cursor: pointer; user-select: none; transition: transform 0.2s;">&times;</span>
+    
+    <!-- Imagen ampliada -->
+    <img id="imagen-mayor" src="" alt="Vista previa" style="max-width: 85%; max-height: 80vh; object-fit: contain; border: 2px solid #ebc105; border-radius: 15px; box-shadow: 0 0 30px rgba(235, 193, 5, 0.4); transform: scale(0.7); transition: transform 0.3s ease;">
+</div>
+        </center>
+    </div>
+
+    <!-- Scripts de Control -->
+    <script src="main.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const modal = document.getElementById('preview-modal');
+        const imagenMayor = document.getElementById('imagen-mayor');
+        const botonCerrar = document.getElementById('cerrar-preview');
+        // Seleccionamos la imagen de la escena de la barra
+        const imagenBarra = document.querySelector('.animar-imagen');
+
+        if (imagenBarra) {
+            // Abrir el preview al pulsar la imagen
+            imagenBarra.addEventListener('click', () => {
+                imagenMayor.src = imagenBarra.src;
+                modal.style.display = 'flex';
+                setTimeout(() => {
+                    modal.style.opacity = '1';
+                    imagenMayor.style.transform = 'scale(1)';
+                }, 10);
+            });
+        }
+
+        // Función para cerrar el preview
+        const cerrarModal = () => {
+            modal.style.opacity = '0';
+            imagenMayor.style.transform = 'scale(0.7)';
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300);
+        };
+
+        // Eventos para cerrar (Click en X, click fuera de la foto o pulsar Escape)
+        botonCerrar.addEventListener('click', cerrarModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target !== imagenMayor) cerrarModal();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.style.display === 'flex') cerrarModal();
+        });
+    });
+</script>
+</body>
+</html>
