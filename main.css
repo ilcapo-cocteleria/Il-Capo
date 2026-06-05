@@ -36,20 +36,26 @@ body, p, span, div, h1, h2, h3, .texto, .descripcion {
         padding: 0 !important;
     }
 
-    .bloque, .bloque-cocteles {
-        display: block !important;
-        width: 92% !important;
-        max-width: 92% !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
-        margin-top: 20px !important;
-        margin-bottom: 30px !important;
-        padding: 35px 20px !important;
-        float: none !important;
-        box-sizing: border-box !important;
-        opacity: 1 !important;
-        transform: none !important;
-    }
+  .bloque, .bloque-cocteles {
+    display: block !important;
+    width: 92% !important;
+    max-width: 92% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: 20px !important;
+    margin-bottom: 30px !important;
+    padding: 35px 20px !important;
+    float: none !important;
+    box-sizing: border-box !important;
+    opacity: 1 !important;
+    transform: none !important;
+    
+    /* --- CAMBIOS AÑADIDOS PARA EL DISEÑO --- */
+    border-radius: 25px !important;            /* Esquinas redondas */
+    background-color: rgba(0, 0, 0, 0.85) !important; /* Fondo ajustado oscuro */
+    border: 1px solid rgba(235, 193, 5, 0.3) !important; /* Borde dorado fino */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5) !important; /* Sombra elegante */
+}
 
     .texto, .descripcion, p, span {
         font-size: 17px !important;
