@@ -3,13 +3,11 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="main.css?v=5.0">
+    <link rel="stylesheet" href="main.css?v=6.0">
     <title>Il Capo - Nuestra Coctelera</title>
     
-    <!-- Modificación: Añadido 'defer' para que el script se cargue en segundo plano sin bloquear el HTML -->
     <script src="main.js" defer></script>
 
-    <!-- SISTEMA DE EMERGENCIA EN LÍNEA: Si el archivo main.js falla o no se encuentra, esto quitará el spinner a los 2.5 segundos de todos modos -->
     <script>
         setTimeout(() => {
             const loader = document.getElementById('loader-wrapper');
@@ -20,17 +18,6 @@
                 console.log("Desbloqueo de emergencia activado con éxito.");
             }
         }, 2500); // 2.5 segundos (margen de seguridad)
-
-        <!-- SISTEMA DE EMERGENCIA EN LÍNEA Y VISTA PREVIA -->
-        // Spinner de carga de la página
-        setTimeout(() => {
-            const loader = document.getElementById('loader-wrapper');
-            const contenido = document.getElementById('contenido-pagina');
-            if (loader && !loader.classList.contains('fade-out')) {
-                loader.classList.add('fade-out');
-                if (contenido) contenido.style.display = 'block';
-            }
-        }, 2500);
 
         // Lógica de la Vista Previa en Grande
         document.addEventListener("DOMContentLoaded", () => {
@@ -71,57 +58,18 @@
         });
     </script>
 
-        
-    </script>
-
-    <!-- Estilos de soporte para garantizar la alineación interna a la derecha de las imágenes -->
     <style>
-        /* Contenedor base (Impares: Foto a la derecha, Texto a la izquierda) */
+        /* === ESTILOS PARA ORDENADOR (VISTA ESCRITORIO) === */
         .item-coctel {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 40px; /* Más espacio para que respire el diseño alternado */
-            margin-bottom: 25px;
+            gap: 50px; 
+            margin-bottom: 50px; 
             text-align: left;
         }
 
-        /* TRUCO MAGICO: Invierte el orden en las filas PARES (2, 4, 6, 8, 10) */
-        /* La foto pasará automáticamente a la izquierda y el texto a la derecha */
-        .item-coctel:nth-of-type(even) {
-            flex-direction: row-reverse;
-            text-align: right; /* Alinea el texto a la derecha cuando la foto está a la izquierda */
-        }
-
-        .info-coctel {
-            flex: 1;
-        }
-
-        /* Control uniforme y estricto para todas las fotos de los cócteles */
-        img.foto-coctel-lista {
-            width: 130px !important; /* Un poco más grandes para que luzcan mejor */
-            height: 130px !important;
-            object-fit: contain !important;
-            border-radius: 8px !important;
-            padding: 5px;
-            box-sizing: border-box;
-            margin: 0 !important;
-            flex-shrink: 0; /* Evita que la foto se encoja si el texto es muy largo */
-        }
-    </style>
-</head>
-<style>
-        /* Contenedor base (Impares: Foto a la derecha, Texto a la izquierda) */
-        .item-coctel {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 50px; /* Más separación para que no choque con las fotos nuevas gigantes */
-            margin-bottom: 50px; /* Más espacio entre cóctel y cóctel */
-            text-align: left;
-        }
-
-        /* Invierte el orden en las filas PARES (2, 4, 6, 8, 10) */
+        /* Invierte el orden en las filas PARES (2, 4, 6, 8, 10) en PC */
         .item-coctel:nth-of-type(even) {
             flex-direction: row-reverse;
             text-align: right; 
@@ -131,168 +79,34 @@
             flex: 1;
         }
 
-        /* CONTROL MAFIOSO DE TAMAÑO: Súper visible y enorme */
+        /* CONTROL DE TAMAÑO PARA PC: Grande y vistoso */
         img.foto-coctel-lista {
-            width: 320px !important;  /* ¡Subido radicalmente a 320px! */
-            height: 320px !important; /* Cuadrado gigante */
-            object-fit: contain !important; /* Si tus PNG tienen mucho aire, 'contain' evita que se corten */
+            width: 320px !important;  
+            height: 320px !important; 
+            object-fit: contain !important; 
             border-radius: 12px !important;
-            padding: 15px; /* Más separación interna del borde dorado */
+            padding: 15px; 
             box-sizing: border-box;
             margin: 0 !important;
-            flex-shrink: 0; /* Evita por completo que el texto largo aplaste la foto */
-            
-            /* Animación añadida para cuando pases el ratón */
+            flex-shrink: 0; 
             transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
 
-        /* Efecto premium extra al pasar el cursor sobre las fotos gigantes */
         img.foto-coctel-lista:hover {
             transform: scale(1.05);
             box-shadow: 0 0 20px rgba(235, 193, 5, 0.5);
             border-color: #ffffff !important;
         }
-    </style>
-<body style="background-color:rgb(179, 0, 12)">
-    <!-- Pantalla de carga (Spinner) -->
-    <div id="loader-wrapper">
-        <div class="spinner"></div>
-    </div>
 
-    <!-- Contenido principal -->
-    <div id="contenido-pagina" style="display: none;">
-        <center>
-            <br>
-            <br>
-            <br>
-            <!-- Bloque de Navegación superior -->
-            <div class="bloque" style="background-color: rgba(0, 0, 0, 0.8); color: #ffffff;">
-                <a href="main.html" style="color: #ffffff; font-family: 'ModernRomance', monospace; text-decoration: none; font-size: 20px;">Inicio</a>
-                <a href="main.html" style="color: #ffffff; font-family: 'ModernRomance', monospace; text-decoration: none; font-size: 20px; margin-left: 20px;">Sobre nosotros</a>
-                <a href="main.html" style="color: #ffffff; font-family: 'ModernRomance', monospace; text-decoration: none; font-size: 20px; margin-left: 20px;">Contacto</a>
-                <a href="coctelera.html" style="color: #ffffff; font-family: 'ModernRomance', monospace; text-decoration: none; font-size: 20px; margin-left: 20px; border-bottom: 1px solid #ebc105;">Nuestra Coctelera</a>
-            </div>
-            
-            <!-- CUADRO DE CÓCTELES -->
-            <div class="bloque-cocteles">
-                <img class="logo-coctelera" src="logo.png" alt="Logo Il Capo">
-                
-                <h1 style="font-family: 'ModernRomance', monospace; color: #ebc105; margin-bottom: 40px; letter-spacing: 2px; margin-top: 10px;">CARTA DE CONTRABANDO</h1>
-                
-                <!-- Lista de los 10 cócteles con soporte para imágenes a la derecha -->
-                <div style="max-width: 95%; margin: 0 auto; font-family: 'ModernRomance', monospace; color: #ffffff; line-height: 1.6;">
-                    
-                    <!-- 1. Dry Martini -->
-                    <div class="item-coctel">
-                        <div class="info-coctel">
-                            <h3 style="color: #ebc105; margin: 0 0 5px 0;">1. Dry Martini</h3>
-                            <p style="margin: 0; font-size: 20px;">El rey de la coctelería clásica y el trago elegante por excelencia. Se elabora mezclando ginebra premium y una pizca de vermut seco, removido con hielo (nunca agitado, para mantenerlo cristalino) y servido en la icónica copa de cóctel fría. Se corona con una aceituna o un twist de piel de limón. En el contexto de la mafia, es el trago de los hombres de negocios refinados.</p>
-                        </div>
-                        <img class="foto-coctel-lista" src="dry-martini.png" alt="Dry Martini">
-                    </div>
+        /* === ADAPTACIÓN RADICAL SÓLO PARA MÓVILES === */
+        @media (max-width: 768px) {
+            .item-coctel, .item-coctel:nth-of-type(even) {
+                flex-direction: column !important; /* Apila la foto abajo del texto de forma obligatoria */
+                text-align: center !important;     /* Centra los textos de todos los cócteles */
+                gap: 20px !important;
+                margin-bottom: 40px !important;
+            }
 
-                    <!-- 2. Spicy Jalapeño Margarita -->
-                    <div class="item-coctel">
-                        <div class="info-coctel">
-                            <h3 style="color: #ebc105; margin: 0 0 5px 0;">2. Spicy Jalapeño Margarita</h3>
-                            <p style="margin: 0; font-size: 20px;">Una variante audaz y electrizante del Margarita tradicional. Se machacan rodajas de jalapeño fresco junto con el zumo de lima y jarabe de agave, para luego agitarlo con tequila blanco y licor de naranja (Triple Sec). Se sirve en un vaso bajo con hielo y el borde escarchado con sal y tajín o chile en polvo. Ofrece un equilibrio perfecto entre lo cítrico, lo dulce y un toque picante que despierta el paladar.</p>
-                        </div>
-                        <img class="foto-coctel-lista" src="spicy-jalapeño-margarita.png" alt="Spicy Jalapeño Margarita">
-                    </div>
-
-                    <!-- 3. Godfather -->
-                    <div class="item-coctel">
-                        <div class="info-coctel">
-                            <h3 style="color: #ebc105; margin: 0 0 5px 0;">3. Godfather</h3>
-                            <p style="margin: 0; font-size: 20px;">Un cóctel con nombre propio que encaja de forma idéntica en tu temática. Es un trago directo, potente y de ritmo pausado. Combina a partes iguales Whisky escocés y Amaretto (licor de almendras italiano). El dulzor del licor suaviza la fuerza del whisky, creando una combinación ahumada y melosa ideal para tomar con un gran cubo de hielo.</p>
-                        </div>
-                        <img class="foto-coctel-lista" src="godfather.png" alt="Godfather">
-                    </div>
-
-                    <!-- 4. Negroni Envejecido -->
-                    <div class="item-coctel">
-                        <div class="info-coctel">
-                            <h3 style="color: #ebc105; margin: 0 0 5px 0;">4. Negroni Envejecido</h3>
-                            <p style="margin: 0; font-size: 20px;">El cóctel italiano por excelencia. Lleva partes iguales de ginebra, Campari (licor amargo) y vermut dulce rojo. Para elevar la experiencia en un local secreto, se suele macerar o envejecer en pequeñas barricas de roble. Su sabor es amargo, complejo y sumamente sofisticado.</p>
-                        </div>
-                        <img class="foto-coctel-lista" src="negroni.png" alt="Negroni Envejecido">
-                    </div>
-
-                    <!-- 5. Espresso Martini -->
-                    <div class="item-coctel">
-                        <div class="info-coctel">
-                            <h3 style="color: #ebc105; margin: 0 0 5px 0;">5. Espresso Martini</h3>
-                            <p style="margin: 0; font-size: 20px;">A pesar de llevar el nombre "Martini" por la copa en la que se sirve, su alma es totalmente distinta. Es una mezcla energética e intensa de vodka, licor de café, un shot de café espresso recién hecho y un toque de sirope. Al agitarlo con fuerza en la coctelera se genera una densa capa de crema en la superficie que se decora con tres granos de café.</p>
-                        </div>
-                        <img class="foto-coctel-lista" src="espresso.jpg" alt="Espresso Martini">
-                    </div>
-
-                    <!-- 6. Manhattan -->
-                    <div class="item-coctel">
-                        <div class="info-coctel">
-                            <h3 style="color: #ebc105; margin: 0 0 5px 0;">6. Manhattan</h3>
-                            <p style="margin: 0; font-size: 20px;">Nacido en Nueva York a finales del siglo XIX, es uno de los pilares de la mixología americana. Se prepara mezclando Rye Whisky (whisky de centeno) o Bourbon, vermut dulce y unas gotas de angostura. Se sirve colado en copa fría y se adorna con una cereza al marrasquino. Es un trago robusto, dulce y especiado.</p>
-                        </div>
-                        <img class="foto-coctel-lista" src="manhattan.png" alt="Manhattan">
-                    </div>
-
-                    <!-- 7. Old Fashioned -->
-                    <div class="item-coctel">
-                        <div class="info-coctel">
-                            <h3 style="color: #ebc105; margin: 0 0 5px 0;">7. Old Fashioned</h3>
-                            <p style="margin: 0; font-size: 20px;">Considerado por muchos como el primer cóctel de la historia. Se elabora disolviendo azúcar con unas gotas de amargo de Angostura y un chorrito de agua directamente en el vaso, para luego añadir Bourbon o whisky de centeno and hielo. Se aromatiza exprimiendo los aceites de una corteza de naranja sobre el vaso. Un trago seco y con mucho carácter.</p>
-                        </div>
-                        <img class="foto-coctel-lista" src="old-fashioned-Cv4VvqMb.png" alt="Old Fashioned">
-                    </div>
-
-                    <!-- 8. Bloody Mary -->
-                    <div class="item-coctel">
-                        <div class="info-coctel">
-                            <h3 style="color: #ebc105; margin: 0 0 5px 0;">8. Vieux Carré Imperial</h3>
-                            <p style="margin: 0; font-size: 20px;"> Nombrado en honor al Barrio Francés de Nueva Orleans, este cóctel es un monumento a la complejidad líquida. Mezcla a partes iguales Whisky de centeno premium y Cognac V.S.O.P., combinados con Vermut dulce y licor herbal Bénédictine. Se remueve suavemente con hielo y se añaden dos tipos de amargos (Angostura y Peychaud). El resultado es un trago corto de color caoba, denso, complejo, con notas ahumadas, dulces y medicinales. Un trago fuerte, lento de beber, diseñado para los verdaderos jefes.</p>
-                        </div>
-                        <img class="foto-coctel-lista" src="carre.png" alt="Vieux Carré Imperial">
-                    </div>
-
-                    <!-- 9. Moscow Mule -->
-                    <div class="item-coctel">
-                        <div class="info-coctel">
-                            <h3 style="color: #ebc105; margin: 0 0 5px 0;">9. Millionaire Margarita</h3>
-                            <p style="margin: 0; font-size: 20px;">Haciendo honor a su nombre, este es un trago de la era de la Prohibición diseñado para los gángsters que coronaban los mejores negocios. Lleva una base compleja de ron añejo, ginebra premium, un toque de licor de naranja (Grand Marnier) y unas gotas de granadina real para darle un color rojizo profundo. Se agita con una clara de huevo para crear una capa de espuma densa y aterciopelada en la superficie. Es un cóctel rico, dulce, potente y con una textura que grita opulencia.</p>
-                        </div>
-                        <img class="foto-coctel-lista" src="millionare.png" alt="Millionaire Margarita">
-                    </div>
-
-                    <!-- 10. Boulevardier -->
-                    <div class="item-coctel">
-                        <div class="info-coctel">
-                            <h3 style="color: #ebc105; margin: 0 0 5px 0;">10. Boulevardier</h3>
-                            <p style="margin: 0; font-size: 20px;">Una variante del Negroni nacida en los años 20 en París, ideal para los amantes del buen Bourbon. En lugar de usar ginebra, este cóctel combina el Bourbon (whisky americano) con Campari y vermut dulce rojo. El cambio sustituye la rigidez botánica de la ginebra por la calidez dulce y amaderada del whisky, logrando un trago oscuro, denso y misterioso.</p>
-                        </div>
-                        <img class="foto-coctel-lista" src="boulevardier.png" alt="Boulevardier">
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- Audio de fondo -->
-            <audio id="bg-music" loop>
-                <source src="music2.mp3" type="audio/mpeg">
-            </audio>
-
-            <div class="interface-container" style="height: 20vh;">
-                <div class="login-box"></div>
-            </div>
-
-            <!-- Modal para la Vista Previa en Grande -->
-<div id="preview-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0, 0, 0, 0.9); z-index: 12000; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease;">
-    <!-- Botón para cerrar (X) -->
-    <span id="cerrar-preview" style="position: absolute; top: 30px; right: 40px; color: #ebc105; font-size: 50px; font-family: monospace; cursor: pointer; user-select: none; transition: transform 0.2s;">&times;</span>
-    
-    <!-- Imagen que se ampliará -->
-    <img id="imagen-mayor" src="" alt="Vista previa" style="max-width: 85%; max-height: 80vh; object-fit: contain; border: 2px solid #ebc105; border-radius: 15px; box-shadow: 0 0 30px rgba(235, 193, 5, 0.4); transform: scale(0.7); transition: transform 0.3s ease;">
-</div>
-        </center>
-    </div>
-</body>
-</html>
+            .info-coctel {
+                width: 100% !important;
+                max-width:
