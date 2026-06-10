@@ -16,6 +16,15 @@
     font-style: normal;
 }
 
+@font-face {
+ font-family: 'Bemdayni';
+ src: url('Bemdayni\ Demo.otf') format('opentype');
+ font-weight: normal;
+ font-style: normal;
+
+
+
+}
 /* ==========================================================================
    CORRECCIÓN GLOBAL: FORZAR TEXTO RECTO (NO LADEADO)
    ========================================================================== */
