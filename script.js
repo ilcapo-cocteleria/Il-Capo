@@ -1,8 +1,8 @@
 document.getElementById('formulario-login').addEventListener('submit', function(event) {
     event.preventDefault(); 
 
-    const usuarioCorrecto = "Il Capo";
-    const passwordCorrecto = "fomo";
+    const usuarioCorrecto = "El Capo";
+    const passwordCorrecto = "Riservato";
 
     const usuarioIngresado = document.getElementById('username').value;
     const passwordIngresada = document.getElementById('password').value;
